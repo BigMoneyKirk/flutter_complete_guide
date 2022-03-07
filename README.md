@@ -31,6 +31,10 @@ Of course the `username` (i.e. kirkp) will change based on which local computer 
 
 We need a Java 8 download as well.
 
+Make sure the Andriod emulator is running.
+
+`import '@package:flutter/material.dart` is one of the most useful libraries when it comes to Widgets. You practically need it.
+
 ## Resources
 
 I took the `main.dart` from my instructor, Maximilian Schwarzmüller's, source code. As well as the `pubspec.yaml` file.
