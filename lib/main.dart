@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
   String displayQuestion = "The question!";
 
-  void _nextQuestion(List<String> questions) {
+  void _nextQuestion(List<Object> questions) {
     setState(
         () => {if (_questionIndex != questions.length - 1) _questionIndex++});
   }
@@ -24,17 +24,23 @@ class _MyAppState extends State<MyApp> {
     setState(() => {if (_questionIndex != 0) _questionIndex--});
   }
 
-  void _answerQuestion() {
-    print("Testing: 1, 2, 3");
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> questions = [
-      "What's your favorite color?",
-      "What's your favorite animal?",
-      "What's up with you?"
+    var questions = [
+      {
+        'questionText': "What's your favorite color?",
+        'answers': ["Green", "Indigo", "Grey"]
+      },
+      {
+        'questionText': "What's your favorite animal?",
+        'answers': ["Dog", "Lion", "Bear"]
+      },
+      {
+        'questionText': "What's up with you?",
+        'answers': ["Nuthan", "Just Chillin", "Coolin' it"]
+      }
     ];
+
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
@@ -42,18 +48,11 @@ class _MyAppState extends State<MyApp> {
               backgroundColor: Colors.indigo,
             ),
             body: Column(children: <Widget>[
-              Question(questions[_questionIndex]),
-              RaisedButton(
-                child: Answer("Huh?", () => _nextQuestion(questions)),
-              ),
-              RaisedButton(
-                child: Text("Answer 2"),
-                onPressed: () => _nextQuestion(questions),
-              ),
-              RaisedButton(
-                child: Text("Answer 3"),
-                onPressed: _previousQuestion,
-              )
+              Question(questions[_questionIndex]['questionText']),
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) {
+                return Answer(answer, () => _nextQuestion(questions));
+              }).toList(),
             ])));
   }
 }
