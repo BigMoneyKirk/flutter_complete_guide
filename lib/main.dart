@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
+import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  int questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  int _questionIndex = 0;
   String displayQuestion = "The question!";
 
-  void answerQuestion() {
-    setState(() => questionIndex++);
-    print(questionIndex);
+  void _nextQuestion(List<String> questions) {
+    setState(
+        () => {if (_questionIndex != questions.length - 1) _questionIndex++});
+  }
+
+  void _previousQuestion() {
+    setState(() => {if (_questionIndex != 0) _questionIndex--});
+  }
+
+  void _answerQuestion() {
+    print("Testing: 1, 2, 3");
   }
 
   @override
   Widget build(BuildContext context) {
     List<String> questions = [
       "What's your favorite color?",
-      "What's your favorite animal?"
+      "What's your favorite animal?",
+      "What's up with you?"
     ];
     return MaterialApp(
         home: Scaffold(
@@ -31,17 +42,18 @@ class MyAppState extends State<MyApp> {
               backgroundColor: Colors.indigo,
             ),
             body: Column(children: <Widget>[
-              Text(questions[questionIndex]),
+              Question(questions[_questionIndex]),
               RaisedButton(
-                child: Text("Answer 1"),
-                onPressed: answerQuestion,
+                child: Answer("Huh?", () => _nextQuestion(questions)),
               ),
               RaisedButton(
                 child: Text("Answer 2"),
-                onPressed: null,
+                onPressed: () => _nextQuestion(questions),
               ),
-              RaisedButton(child: Text("Answer 3")),
-              // onPressed: () => displayQuestion = questions.elementAt(1)),
+              RaisedButton(
+                child: Text("Answer 3"),
+                onPressed: _previousQuestion,
+              )
             ])));
   }
 }
