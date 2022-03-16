@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,8 +15,7 @@ class _MyAppState extends State<MyApp> {
   String displayQuestion = "The question!";
 
   void _nextQuestion(List<Object> questions) {
-    setState(
-        () => {if (_questionIndex != questions.length - 1) _questionIndex++});
+    setState(() => {if (_questionIndex != questions.length) _questionIndex++});
   }
 
   void _previousQuestion() {
@@ -26,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const _questions = [
       {
         'questionText': "What's your favorite color?",
         'answers': ["Green", "Indigo", "Grey"]
@@ -47,12 +45,11 @@ class _MyAppState extends State<MyApp> {
               title: Text("Flutter Complete Guide"),
               backgroundColor: Colors.indigo,
             ),
-            body: Column(children: <Widget>[
-              Question(questions[_questionIndex]['questionText']),
-              ...(questions[_questionIndex]['answers'] as List<String>)
-                  .map((answer) {
-                return Answer(answer, () => _nextQuestion(questions));
-              }).toList(),
-            ])));
+            body: _questionIndex < _questions.length
+                ? Quiz(
+                    _questions, _questionIndex, () => _nextQuestion(_questions))
+                : Center(
+                    child: Text("You have reached the end of the questions!!"),
+                  )));
   }
 }
