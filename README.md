@@ -15,12 +15,12 @@ Flutter can be ran on any of the following operating systems:
 - Linux
 - web
 
+The operating system I will choose for this project is Windows. The operating system I choose to develop for is called the "development target". Windows is my development target. The reason why is, the tutorial highly recommends my "development device" (i.e. a Windows laptop) and its development target device have the same OS. The app can run on any of the OS mentioned above, so my end app, I would like for it to run on iOS.
+
 ## Useful Flutter Commands
 `flutter doctor -v` -> describes what version of Flutter I have and where I extracted the files to. BTW: I need to inject that file path in my "system environment variable"'s PATH in order to use it.
 
 `flutter upgrade` -> installs the latest version of Flutter onto my computer
-
-The operating system I will choose for this project is iOS. The operating system I choose to develop for is called the "development target". iOS is my development target.
 
 ## Flutter Setup
 Necessary software:
