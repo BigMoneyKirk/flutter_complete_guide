@@ -6,6 +6,22 @@ The purpose of me learning how to create Flutter applications is to build my por
 
 I plan to use Wix to build my new personal app because most of the time people want me to build their website, I will use a development tool such as Wix. It is time to put my pride to the side so that I can make quality websites for my future clients. They will not be disappointed.
 
+## About Flutter
+Flutter can be ran on any of the following operating systems:
+- iOS
+- Windows
+- macOS
+- Android
+- Linux
+- web
+
+The operating system I will choose for this project is iOS. The operating system I choose to develop for is called the "development target". iOS is my development target.
+
+## Flutter Setup
+Necessary software:
+- Git
+- Visual Studio Code
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -18,10 +34,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## Flutter Setup
-Necessary software:
-- Git
 
 ## Android SDK Setup
 
